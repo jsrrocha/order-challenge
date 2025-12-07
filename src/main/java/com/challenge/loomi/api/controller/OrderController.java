@@ -37,7 +37,7 @@ public class OrderController {
     @GetMapping
     public ResponseEntity<Page<OrderResponse>> listOrders(
             @RequestParam String customerId,
-            @PageableDefault(size = 10, sort = "createdAt") Pageable pageable) {
+            @PageableDefault(sort = "createdAt") Pageable pageable) {
         Page<OrderResponse> response = orderService.listOrdersByCustomer(customerId, pageable);
         return ResponseEntity.ok(response);
     }
