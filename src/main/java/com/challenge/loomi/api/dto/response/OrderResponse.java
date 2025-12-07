@@ -7,7 +7,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
-// Record para representar o pedido completo
 public record OrderResponse(
     UUID orderId,
     String customerId,
@@ -16,7 +15,6 @@ public record OrderResponse(
     LocalDateTime createdAt,
     List<OrderItemResponse> items
 ) {
-    // Mapper estático: Converte Entidade -> DTO
     public static OrderResponse from(Order order) {
         return new OrderResponse(
             order.getId(),
