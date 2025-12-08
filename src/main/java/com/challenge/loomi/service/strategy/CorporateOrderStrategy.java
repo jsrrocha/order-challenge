@@ -30,14 +30,14 @@ public class CorporateOrderStrategy implements OrderProcessingStrategy {
             BigDecimal newTotal = order.getTotalAmount().subtract(discountAmount);
             order.setTotalAmount(newTotal);
 
-            log.info("[CORPORATE] 💰 Volume discount applied! -${} (15% off on item {}). New Total: ${}",
+            log.info("[CORPORATE] Volume discount applied! -${} (15% off on item {}). New Total: ${}",
                     discountAmount, item.getProductId(), newTotal);
         }
 
         BigDecimal autoApprovalLimit = new BigDecimal("50000.00");
 
         if (order.getTotalAmount().compareTo(autoApprovalLimit) > 0) {
-            log.warn("⚠️ [CORPORATE] Order value ${} exceeds auto-approval limit. Set to PENDING_APPROVAL.", order.getTotalAmount());
+            log.warn("[CORPORATE] Order value ${} exceeds auto-approval limit. Set to PENDING_APPROVAL.", order.getTotalAmount());
             order.setStatus(OrderStatus.PENDING_APPROVAL);
         } else {
             log.info("[CORPORATE] B2B Order Approved automatically.");

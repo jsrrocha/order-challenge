@@ -37,9 +37,10 @@ public class PhysicalOrderStrategy implements OrderProcessingStrategy {
         productRepository.save(product);
 
         if (newStock < 5) {
-            log.warn("⚠️ [LOW STOCK ALERT] Product {} has only {} items remaining! Sending event...", product.getId(), newStock);
+            log.warn("[LOW STOCK ALERT] Product {} has only {} items remaining! Sending event...", product.getId(), newStock);
             // Dispara o evento para o Kafka
-            eventProducer.sendLowStockAlert(product.getId(), newStock);      }
+            eventProducer.sendLowStockAlert(product.getId(), newStock);
+        }
 
         log.info("[PHYSICAL] Stock reserved. Dispatching from warehouse.");
     }

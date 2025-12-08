@@ -44,7 +44,7 @@ public class DigitalOrderStrategy implements OrderProcessingStrategy {
         }
 
         log.info("[DIGITAL] License Generated: {}", licenseKey);
-        log.info("[DIGITAL] 📧 Sent access link to {}", email);
+        log.info("[DIGITAL] Sent access link to {}", email);
 
     }
 }
